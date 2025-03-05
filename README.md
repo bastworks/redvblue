@@ -1,3 +1,38 @@
+# Cowboy V Samurai - Multiplayer FPS Game
+
+A block-style FPS deathmatch game similar to Counter-Strike GO, built with Three.js and Bun.
+
+## Project Setup
+
+This project uses:
+- Bun as the runtime and WebSocket server
+- Three.js for 3D rendering
+- Vanilla JavaScript (no frameworks)
+
+### Installation
+
+1. Make sure you have [Bun](https://bun.sh/) installed:
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+2. Install dependencies:
+```bash
+bun install
+```
+
+3. Start the development server:
+```bash
+bun dev
+```
+
+4. Open your browser and navigate to `http://localhost:3000`
+
+## Game Architecture
+
+- **Client**: Three.js for rendering, WebSocket for real-time communication
+- **Server**: Bun WebSocket server for game state management and synchronization
+
 # Roadmap
 
 Cowboy V Samurai is a fps deathmatch game similar counter strike go. It's a block style game. Once player open our website, player can choose which team to pick.
