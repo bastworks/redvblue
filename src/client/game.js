@@ -246,14 +246,16 @@ window.addEventListener('load', init);
 // Set up keyboard controls
 const keys = {};
 window.addEventListener('keydown', (e) => {
-    keys[e.key] = true;
+    // Store the lowercase version of the key for consistency
+    const key = e.key.toLowerCase();
+    keys[key] = true;
     
     // Send input to server
     const input = {
-        forward: keys['w'] || keys['ArrowUp'] || false,
-        backward: keys['s'] || keys['ArrowDown'] || false,
-        left: keys['a'] || keys['ArrowLeft'] || false,
-        right: keys['d'] || keys['ArrowRight'] || false,
+        forward: keys['w'] || keys['arrowup'] || false,
+        backward: keys['s'] || keys['arrowdown'] || false,
+        left: keys['a'] || keys['arrowleft'] || false,
+        right: keys['d'] || keys['arrowright'] || false,
         jump: keys[' '] || false
     };
     
@@ -261,14 +263,16 @@ window.addEventListener('keydown', (e) => {
 });
 
 window.addEventListener('keyup', (e) => {
-    keys[e.key] = false;
+    // Store the lowercase version of the key for consistency
+    const key = e.key.toLowerCase();
+    keys[key] = false;
     
     // Send input to server
     const input = {
-        forward: keys['w'] || keys['ArrowUp'] || false,
-        backward: keys['s'] || keys['ArrowDown'] || false,
-        left: keys['a'] || keys['ArrowLeft'] || false,
-        right: keys['d'] || keys['ArrowRight'] || false,
+        forward: keys['w'] || keys['arrowup'] || false,
+        backward: keys['s'] || keys['arrowdown'] || false,
+        left: keys['a'] || keys['arrowleft'] || false,
+        right: keys['d'] || keys['arrowright'] || false,
         jump: keys[' '] || false
     };
     
