@@ -36,7 +36,11 @@ Cowboy V Samurai is a fps deathmatch game similar counter strike go. It's a bloc
 
 # General
 
-let's add additional hotkey for left click and right click with j or k for those who don't have access to trackpad or mouse
+- let's add additional hotkey for left click and right click with j or k for those who don't have access to trackpad or mouse
+- let's implement minimum players for each team is 8 therefore if it isn't filled, it will be filled with AI. the max quantity for each team is TBD unlimited for now.
+- game round runs in 45min max, after that prints the high scores, leaderboard and announce winner for the last round in a modal in the center, since we don't implement game exit it will just be a modal popping up with close button titled "LAST ROUND" 
+
+- respawn mechanism copy CS mechanism
 
 # Map
 
