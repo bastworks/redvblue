@@ -21,9 +21,12 @@ const TICK_RATE = 60; // Updates per second
 const PLAYER_SPEED = 0.1;
 const TEAMS = ['red', 'blue'];
 
+// Get port from environment variable or use default
+const PORT = process.env.PORT || 3000;
+
 // WebSocket server and HTTP server
 const server = serve({
-    port: 3000,
+    port: PORT,
     fetch(req, server) {
         const url = new URL(req.url);
         
@@ -136,7 +139,7 @@ const server = serve({
     }
 });
 
-console.log(`Server running at http://localhost:3000`);
+console.log(`Server running at http://localhost:${PORT}`);
 
 // Generate a unique player ID
 function generatePlayerId() {
