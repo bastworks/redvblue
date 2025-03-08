@@ -20,6 +20,9 @@ const clients = new Map();
 const TICK_RATE = 60; // Updates per second
 const PLAYER_SPEED = 0.1;
 const TEAMS = ['red', 'blue'];
+const GRAVITY = 0.01;
+const JUMP_FORCE = 0.3;
+const GROUND_LEVEL = 0.5;
 
 // Get port from environment variable or use default
 const PORT = process.env.PORT || 3000;
@@ -71,6 +74,8 @@ const server = serve({
                 team,
                 position: { x: 0, y: 0.5, z: 0 },
                 rotation: 0,
+                velocity: { x: 0, y: 0, z: 0 },
+                isGrounded: true,
                 input: {
                     forward: false,
                     backward: false,
@@ -210,9 +215,28 @@ setInterval(() => {
             dz *= PLAYER_SPEED;
         }
         
+        // Apply jumping if player is on the ground and jump input is active
+        if (input.jump && player.isGrounded) {
+            player.velocity.y = JUMP_FORCE;
+            player.isGrounded = false;
+        }
+        
+        // Apply gravity
+        if (!player.isGrounded) {
+            player.velocity.y -= GRAVITY * deltaTime;
+        }
+        
         // Update position
         player.position.x += dx * deltaTime;
         player.position.z += dz * deltaTime;
+        player.position.y += player.velocity.y * deltaTime;
+        
+        // Check if player has landed
+        if (player.position.y <= GROUND_LEVEL) {
+            player.position.y = GROUND_LEVEL;
+            player.velocity.y = 0;
+            player.isGrounded = true;
+        }
         
         // Update rotation if moving
         if (dx !== 0 || dz !== 0) {
